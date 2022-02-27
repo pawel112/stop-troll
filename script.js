@@ -106,8 +106,11 @@ function hideOrReplaceComment(elementList) {
             const wannabeSub = el.parentNode.parentNode.parentNode.parentNode.parentNode;
             const parent = el.parentNode.parentNode.parentNode;
             if (wannabeSub.className !== 'sub') {
-                parent.getElementsByClassName("text")[0].innerHTML = "Nowy użytkownik, rozwijasz spoiler na własną odpowiedzialność:" + `<br><a class="showSpoiler">pokaż spoiler</a><code class="dnone">
-                ${parent.getElementsByClassName("text")[0].innerHTML}</code>`
+                const newUserText = 'Nowy użytkownik, rozwijasz spoiler na własną odpowiedzialność:'
+                if(!parent.getElementsByClassName("text")[0].innerHTML.includes(newUserText)){
+                    parent.getElementsByClassName("text")[0].innerHTML = newUserText + `<br><a class="showSpoiler">pokaż spoiler</a><code class="dnone">
+                    ${parent.getElementsByClassName("text")[0].innerHTML}</code>`
+                }
             } else {
                 parent.parentNode.removeChild(parent)
             }
