@@ -48,4 +48,4 @@ Listy trolli są prywatne i są tylko i wyłącznie na Twoim komputerze, lecz is
 - Twoja lista zostanie poszerzona o użytkowników z listy.
 
 # Known Issues:
-- Kiedy scrollujesz stronę w dół, guziki nie dodają się automatycznie
+- Kiedy scrollujesz stronę w dół, guziki nie dodają się automatycznie - aktualny workaround to podpięcie odświeżenia guzików pod kliknięcie, więc jeśli ich nie widzisz, kliknij w dowolne miejsce na stronie ;)

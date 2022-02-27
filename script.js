@@ -54,6 +54,7 @@ function addTrollUserButton(elementList, isParent = true) {
 function addEvent() {
     const extendButtons = Array.from(document.getElementsByClassName('affect ajax'));
     extendButtons.forEach((el) => el.onclick = () => setTimeout(initLabels, 1000))
+    document.addEventListener("click", ()=>setTimeout(initLabels, 1000));
 }
 
 function getFreshAccounts(){
