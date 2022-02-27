@@ -2,6 +2,8 @@
   "manifest_version": 2,
   "name": "Stop Troll",
   "version": "0.1.0",
+  "icons": { "128": "images/128.png"},
+  "description": "Wtyczka do oznaczania propagandy na serwisach społecznościowych",
   "permissions": [
     "tabs",
     "storage",
