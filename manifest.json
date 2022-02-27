@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Stop Troll",
+  "version": "0.1.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "downloads"
+  ],
+  "web_accessible_resources": [
+    "button.css"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "css": ["button.css"],
+      "matches": ["<all_urls>"],
+      "js": ["script.js"]
+    }
+  ]
+}

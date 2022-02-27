@@ -1,0 +1,19 @@
+.troll {
+  background-color: brown;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 1px 1px;
+  border-radius: 25%;
+}
+
+.unassigned {
+  border: none;
+  background-color: darkgrey;
+  font-size: 8px;
+  cursor: pointer;
+  text-align: center;
+}
