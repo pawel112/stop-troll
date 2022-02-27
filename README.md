@@ -17,7 +17,7 @@ Wtyczka chrome do oznaczania rosyjskiej propagandy. Główne założenia:
 Aktualnie wtyczka jest w trakcie aktywnego developmentu i nie jest dostępna do pobrania oficjalnie. Korzystasz z niej na własne ryzyko.
 Uznałem, że najważniejsze jest aby jak najszybciej oddać ją do użytku ale oczywiście oficjalna dystrybucja powstanie na dniach jak tylko rozwiążemy najważniejsze problemy ;)
 
-- Pobierz stop-troll.zip
+- Pobierz repozytorium - https://github.com/edekdrezyna/stop-troll/archive/refs/heads/main.zip
 - Rozpakuj archiwum
 - W pasku adresu przeglądarki wpisz chrome://extensions/
 - Włącz developer-mode/tryb developera
