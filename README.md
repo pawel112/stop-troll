@@ -47,6 +47,3 @@ Listy trolli są prywatne i są tylko i wyłącznie na Twoim komputerze, lecz is
 - W pole tekstowe przeklej zawartość wyeksportowanego pliku .json lub podaj nicki oddzielone przecinkami(bez spacji)
 - Zatwierdź guzikiem 'OK'
 - Twoja lista zostanie poszerzona o użytkowników z listy.
-
-# Known Issues:
-- Kiedy scrollujesz stronę w dół, guziki nie dodają się automatycznie - aktualny workaround to podpięcie odświeżenia guzików pod kliknięcie, więc jeśli ich nie widzisz, kliknij w dowolne miejsce na stronie ;)
