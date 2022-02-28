@@ -17,7 +17,13 @@
     {
       "css": ["button.css"],
       "matches": ["*://www.wykop.pl/*"],
-      "js": ["script.js"]
+      "js": ["wykop.js"]
+    },
+    {
+      "css": ["button.css"],
+      "run_at": "document_end",
+      "matches": ["*://twitter.com/*"],
+      "js": ["twitter.js"] 
     }
   ],
   "host_permissions": [

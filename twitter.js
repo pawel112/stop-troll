@@ -1,8 +1,17 @@
-initLabels();
-addEvent();
+main()
+
+function main() {
+    if (document.readyState === 'complete') {
+        setTimeout(initLabels, 1000)
+        setTimeout(addEvent, 1000)
+    } else {
+        console.log(1)
+        setTimeout(main, 1000)
+    }
+}
 
 function initLabels() {
-    deleteFreshAccounts();
+    // deleteFreshAccounts();
     addUnassignedUserButtons(getCommentsList());
     chrome.storage.local.get('blockList', (res) => {
         const blockedUsersSet = new Set(res.blockList);
@@ -12,7 +21,7 @@ function initLabels() {
 
 function addUnassignedUserButtons(userList, useParent = true) {
     userList.forEach((el) => {
-        const button = createUnassignedUserButton(el.children[0].innerText);
+        const button = createUnassignedUserButton(el.innerText);
         const parent = useParent ? el.parentNode : el;
         const isUnassigned = parent.getElementsByClassName('unassigned')[0];
         const isTroll = parent.getElementsByClassName('troll')[0];
@@ -26,15 +35,23 @@ function createUnassignedUserButton(username) {
     const button = document.createElement('button');
     button.className = 'unassigned';
     button.innerText = 'Kliknij aby oznaczyć trolla';
-    button.onclick = () => addToBlockList(username);
+    button.addEventListener('click',(e) => { 
+        e.preventDefault();
+        e.stopPropagation();
+        addToBlockList(username);
+    },true);
     return button
 }
 
 function addTrollUserButton(elementList, isParent = true) {
     elementList.map((el) => {
         const button = document.createElement('button');
-        const username = el.children[0].innerText
-        button.onclick = () => deleteLabelFromList(username);
+        const username = el.innerText
+        button.addEventListener('click',(e) => { 
+            e.preventDefault();
+            e.stopPropagation();
+            deleteLabelFromList(username);
+        },true);
         button.className = 'troll';
         button.innerText = 'troll';
         const parent = isParent ? el.parentNode : el;
@@ -52,8 +69,6 @@ function addTrollUserButton(elementList, isParent = true) {
 
 
 function addEvent() {
-    const extendButtons = Array.from(document.getElementsByClassName('affect ajax'));
-    extendButtons.forEach((el) => el.onclick = () => setTimeout(initLabels, 1000))
     document.addEventListener("click", ()=>setTimeout(initLabels, 1000));
 }
 
@@ -62,9 +77,9 @@ function getFreshAccounts(){
 }
 
 function getCommentsList(){
-    const orangeAccounts = Array.from(document.getElementsByClassName('color-1 showProfileSummary'));
-    const redAccounts = Array.from(document.getElementsByClassName('color-2 showProfileSummary'));
-    return [...orangeAccounts, ...redAccounts];
+    const allAccounts = Array.from(document.querySelectorAll("div[dir=ltr] > span"))
+    
+    return allAccounts.filter((el) => el.innerText.startsWith('@'))
 }
 
 
@@ -78,12 +93,12 @@ function clearBlockList() {
 
 
 
-function deleteFreshAccounts() {
-    hideOrReplaceComment(getFreshAccounts())
-}
+// function deleteFreshAccounts() {
+//     hideOrReplaceComment(getFreshAccounts())
+// }
 
 function addLabelToUsersFromList(userList, blockedList, isParent = true) {
-    const trollUsers = userList.filter((el) => blockedList.has(el.children[0].innerText));
+    const trollUsers = userList.filter((el) => blockedList.has(el.innerText));
     addTrollUserButton(trollUsers, isParent);
     addUnassignedUserButtons(userList);
 }
@@ -135,33 +150,17 @@ function deleteLabelFromList(username) {
 }
 
 function deleteLabelFromPage(userName) {
-    const filtered = getCommentsList().filter((el) => el.children[0].innerText === userName);
+
+    const filtered = getCommentsList().filter((el) => el.innerText === userName);
     filtered.forEach((el) =>
     {
         const parent = el.parentNode;
-        parent.removeChild(parent.getElementsByClassName('troll')[0]);
-        const button = createUnassignedUserButton(el.children[0].innerText);
-        parent.appendChild(button);
+        trollEl = parent.getElementsByClassName('troll')[0]
+        if(trollEl){
+            parent.removeChild(trollEl);
+            const button = createUnassignedUserButton(el.innerText);
+            parent.appendChild(button);
+        }
     })
 
 }
-
-
-// IN PROGRESS, CREATED TO MARK EASIER ONES WHO UPVOTE POSTS
-// function addButtonsToVoters(){
-//     const voterList = Array.from(document.getElementsByClassName("usercard width-one-third m-reset-width lcontrast"));
-//     if(voterList){
-//         addUnassignedUserButtons(voterList, false);
-//         chrome.storage.local.get('blockList', (res) => {
-//         console.log(res);
-//         const blackMap = new Map(res.blockList);
-//         addLabelToUsersFromList(voterList, blackMap, false)
-//     });
-//     }
-    
-// }
-
-// function addListener(){
-//     const votersBut = document.getElementById('voters');
-//     votersBut.onclick = () => setTimeout(addButtonsToVoters, 2000)
-// }
