@@ -1,7 +1,10 @@
-console.log('wykop')
-initLabels();
-addEvent();
-console.log('wykop')
+var observer = new MutationObserver(() => {
+    initLabels();
+    addEvent();
+});
+var config = { attributes: false, childList: true, subtree: true, characterData: false };
+observer.observe(document.body, config);
+
 function initLabels() {
     deleteFreshAccounts();
     addUnassignedUserButtons(getCommentsList());

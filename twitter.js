@@ -1,14 +1,9 @@
-main()
-
-function main() {
-    if (document.readyState === 'complete') {
-        setTimeout(initLabels, 1000)
-        setTimeout(addEvent, 1000)
-    } else {
-        console.log(1)
-        setTimeout(main, 1000)
-    }
-}
+var observer = new MutationObserver(() => {
+    initLabels();
+    addEvent();
+});
+var config = { attributes: false, childList: true, subtree: true, characterData: false };
+observer.observe(document.body, config);
 
 function initLabels() {
     // deleteFreshAccounts();

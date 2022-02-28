@@ -8,9 +8,10 @@ Wtyczka chrome do oznaczania rosyjskiej propagandy. Główne założenia:
 
 # Aktualnie wspierane serwisy:
 - wykop.pl
+- Twitter
 
 ## In progress:
-- Twitter
+- Facebook
 
 # Jak zainstalować?
 
