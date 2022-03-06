@@ -21,12 +21,19 @@
     },
     {
       "css": ["button.css"],
-      "run_at": "document_end",
       "matches": ["*://twitter.com/*"],
       "js": ["twitter.js"] 
+    },
+    {
+      "css": ["button.css"],
+      "matches": ["*://www.facebook.com/*"],
+      "js": ["facebook.js"] 
     }
   ],
   "host_permissions": [
-    "*://www.wykop.pl/*"
+    "*://www.wykop.pl/*",
+    "*://twitter.com/*",
+    "*://facebook.com/*"
+
   ]
 }

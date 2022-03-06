@@ -9,9 +9,10 @@ Wtyczka chrome do oznaczania rosyjskiej propagandy. Główne założenia:
 # Aktualnie wspierane serwisy:
 - wykop.pl
 - Twitter
+- Facebook
 
 ## In progress:
-- Facebook
+- Autodetektor treści
 
 # Jak zainstalować?
 
