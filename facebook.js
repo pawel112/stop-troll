@@ -6,7 +6,6 @@ var config = { attributes: false, childList: true, subtree: true, characterData:
 observer.observe(document.body, config);
 
 function initLabels() {
-    // deleteFreshAccounts();
     addUnassignedUserButtons(getCommentsList());
     chrome.storage.local.get('blockList', (res) => {
         const blockedUsersSet = new Set(res.blockList);
@@ -79,21 +78,6 @@ function getCommentsList(){
     return all
 }
 
-
-function clearBlockList() {
-    chrome.storage.local.get('blockList', (res) => {
-        chrome.storage.local.set({blockList: []}, () => {
-            console.log('Clean');
-        });
-    });
-}
-
-
-
-// function deleteFreshAccounts() {
-//     hideOrReplaceComment(getFreshAccounts())
-// }
-
 function addLabelToUsersFromList(userList, blockedList, isParent = true) {
     const trollUsers = userList.filter((el) => blockedList.has(el.innerText));
     addTrollUserButton(trollUsers, isParent);
@@ -110,24 +94,6 @@ function addToBlockList(username) {
         });
         addLabelToUsersFromList(getCommentsList(), blockedUsersSet);
     });
-}
-
-function hideOrReplaceComment(elementList) {
-    elementList.map((el) => {
-        if(el){
-            const wannabeSub = el.parentNode.parentNode.parentNode.parentNode.parentNode;
-            const parent = el.parentNode.parentNode.parentNode;
-            if (wannabeSub.className !== 'sub') {
-                const newUserText = 'Nowy użytkownik, rozwijasz spoiler na własną odpowiedzialność:'
-                if(!parent.getElementsByClassName("text")[0].innerHTML.includes(newUserText)){
-                    parent.getElementsByClassName("text")[0].innerHTML = newUserText + `<br><a class="showSpoiler">pokaż spoiler</a><code class="dnone">
-                    ${parent.getElementsByClassName("text")[0].innerHTML}</code>`
-                }
-            } else {
-                parent.parentNode.removeChild(parent)
-            }
-        }
-    })
 }
 
 function deleteLabelFromList(username) {
@@ -147,7 +113,6 @@ function deleteLabelFromList(username) {
 }
 
 function deleteLabelFromPage(userName) {
-
     const filtered = getCommentsList().filter((el) => el.innerText === userName);
     filtered.forEach((el) =>
     {

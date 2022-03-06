@@ -61,8 +61,6 @@ function addTrollUserButton(elementList, isParent = true) {
     })
 }
 
-
-
 function addEvent() {
     document.addEventListener("click", ()=>setTimeout(initLabels, 1000));
 }
@@ -88,10 +86,6 @@ function clearBlockList() {
 
 
 
-// function deleteFreshAccounts() {
-//     hideOrReplaceComment(getFreshAccounts())
-// }
-
 function addLabelToUsersFromList(userList, blockedList, isParent = true) {
     const trollUsers = userList.filter((el) => blockedList.has(el.innerText));
     addTrollUserButton(trollUsers, isParent);
@@ -108,24 +102,6 @@ function addToBlockList(username) {
         });
         addLabelToUsersFromList(getCommentsList(), blockedUsersSet);
     });
-}
-
-function hideOrReplaceComment(elementList) {
-    elementList.map((el) => {
-        if(el){
-            const wannabeSub = el.parentNode.parentNode.parentNode.parentNode.parentNode;
-            const parent = el.parentNode.parentNode.parentNode;
-            if (wannabeSub.className !== 'sub') {
-                const newUserText = 'Nowy użytkownik, rozwijasz spoiler na własną odpowiedzialność:'
-                if(!parent.getElementsByClassName("text")[0].innerHTML.includes(newUserText)){
-                    parent.getElementsByClassName("text")[0].innerHTML = newUserText + `<br><a class="showSpoiler">pokaż spoiler</a><code class="dnone">
-                    ${parent.getElementsByClassName("text")[0].innerHTML}</code>`
-                }
-            } else {
-                parent.parentNode.removeChild(parent)
-            }
-        }
-    })
 }
 
 function deleteLabelFromList(username) {
@@ -145,7 +121,6 @@ function deleteLabelFromList(username) {
 }
 
 function deleteLabelFromPage(userName) {
-
     const filtered = getCommentsList().filter((el) => el.innerText === userName);
     filtered.forEach((el) =>
     {
