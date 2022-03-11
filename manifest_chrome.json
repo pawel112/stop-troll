@@ -1,27 +1,18 @@
 {
-  "name": "Wtyczka do oznaczania propagandy na serwisach społecznościowych",
-  "version": "0.1.1",
+  "description": "Wtyczka do oznaczania propagandy na serwisach społecznościowych",
+  "icons": { "128": "images/128.png"},
   "manifest_version": 2,
-
-  "icons": {
-    "128": "images/128.png"
-  },
-
+  "name": "Stop Troll",
+  "version": "0.1.1",
   "permissions": [
     "storage",
-	"downloads",
-	"unlimitedStorage",
-    "*://www.wykop.pl/*",
-    "*://twitter.com/*",
-    "*://facebook.com/*"
+    "unlimitedStorage",
+    "downloads"
   ],
-  
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   },
-  
+  "options_page": "options.html",
   "content_scripts": [
     {
       "css": ["button.css"],
@@ -39,9 +30,10 @@
       "js": ["facebook.js"] 
     }
   ],
+  "host_permissions": [
+    "*://www.wykop.pl/*",
+    "*://twitter.com/*",
+    "*://facebook.com/*"
 
-  "options_ui": {
-    "page": "options.html"
-  }
-
+  ]
 }

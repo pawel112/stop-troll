@@ -30,9 +30,17 @@ function downloadBlockList(){
         var result = res.blockList.join(',')
         console.log('end')
         var url = 'data:application/json;base64,' + btoa(result);
-        chrome.downloads.download({
+		/*chrome.downloads.download({
             url: url,
             filename: 'lista_trolli.json'
-        });
+        });*/
+		/*var downloading = browser.downloads.download({
+		  url: url,
+		  filename : 'my-image-again.png',
+		  conflictAction : 'uniquify'
+		});*/
+		//var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+		//saveAs(blob, 'lista_trolli.json', true);
+		saveAs(url, "lista_trolli.json");
     });
 }
