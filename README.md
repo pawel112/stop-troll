@@ -1,5 +1,5 @@
 # stop-troll
-Wtyczka chrome do oznaczania rosyjskiej propagandy. Główne założenia:
+Wtyczka Firefox do oznaczania rosyjskiej propagandy. Główne założenia:
 - Każdy użytkownik może oznaczyć dla siebie prywatnie dowolnego innego użytkownika
 - Każdy użytkownik może podzielić się swoją listą - opierając się na społecznej kontroli list, gdzie użytkownicy sami uznają która lista jest wiarygodna a która nie, maleje zagrożenie oznaczania 'na ślepo' lub ludzi odmiennych światopoglądowo. To użytkownik decyduje kogo dodaje do listy i czyjej liście ufa na tyle aby jej użyć.
 - Propaganda jest oznaczana - lecz nie usuwana. Warto wiedzieć jaki jest aktualny przekaz propagandowy i się na niego nie zamykać, przy jednoczesnej stygmatyzacji takich osób.
@@ -19,12 +19,10 @@ Wtyczka chrome do oznaczania rosyjskiej propagandy. Główne założenia:
 Aktualnie wtyczka jest w trakcie aktywnego developmentu i nie jest dostępna do pobrania oficjalnie. Korzystasz z niej na własne ryzyko.
 Uznałem, że najważniejsze jest aby jak najszybciej oddać ją do użytku ale oczywiście oficjalna dystrybucja powstanie na dniach jak tylko rozwiążemy najważniejsze problemy ;)
 
-- Pobierz repozytorium - https://github.com/edekdrezyna/stop-troll/archive/refs/heads/main.zip
-- Rozpakuj archiwum
-- W pasku adresu przeglądarki wpisz chrome://extensions/
-- Włącz developer-mode/tryb developera
-- Kliknij load-unpacked/Załaduj rozpakowane
-- Wybierz wypadkowane archiwum
+- Pobierz repozytorium - https://github.com/pawel112/stop-troll/archive/refs/heads/main.zip
+- W pasku adresu przeglądarki wpisz about:debugging#/runtime/this-firefox
+- Kliknij tymczasowo wczytaj dodatek...
+- Wybierz pobrany plik
 
 # Jak używać? (wykop.pl)
 
